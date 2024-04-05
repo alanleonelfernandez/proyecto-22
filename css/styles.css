@@ -69,32 +69,30 @@ nav ul li a:hover {
 
 /*----------MAIN----------*/
 
-/* Estilos para la sección 1 */
+
 .seccion-1 {
     background-color: #f2f2f2;
     padding: 20px;
     text-align: justify;
 }
 
-/* Estilos para la sección 2 */
 .seccion-2 {
     display: flex;
-    justify-content: space-between; /* Alinear los elementos a los extremos */
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
-    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en filas */
+    flex-wrap: wrap; 
 }
 
-/* Estilos para cada columna de la sección 2 */
+
 .seccion-2 div {
     text-align: center;
-    width: 48%; /* Establecer el ancho de cada columna */
+    width: 48%;
     margin-bottom: 20px;
 }
 
 .seccion-2 img {
-    width: 100%;
-    max-width: 100%;
+    width: 80%;
     height: auto;
     margin-bottom: 10px;
 }
@@ -110,10 +108,10 @@ nav ul li a:hover {
     font-size: 0.9em;
 }
 
-/* Estilos para dispositivos móviles */
+
 @media (max-width: 768px) {
     .seccion-2 div {
-        width: 100%; /* Cambiar el ancho de cada columna a 100% en dispositivos móviles */
+        width: 100%;
     }
 }
 
@@ -164,7 +162,7 @@ footer p span {
     footer nav ul {
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Centrar verticalmente */
+        justify-content: center;
         align-items: center;
     }
     
