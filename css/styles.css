@@ -217,18 +217,21 @@ footer p span {
 .team-section {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
 .team-member {
     text-align: center;
-    margin: 0 20px;
+    margin: 20px;
+    flex: 1 1 200px;
 }
 
 .team-member img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
