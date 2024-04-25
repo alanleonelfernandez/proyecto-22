@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactanos</title>
+    <link rel="stylesheet" href="/css/contacto.css">
+    <script src="/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="/img/dolar.png" alt="Logo">
+            <h1>Project22 </h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="/pages/nosotros.html">¿Quienes somos?</a></li>
+                <li><a href="/pages/faq.html">FAQs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="contact">
+            <h1 class="section-header">Contact</h1>
+            <div class="contact-wrapper">
+                <!-- Left contact page -->
+                <form id="contact-form" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" value=""
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control" id="email" placeholder="Correo" name="email"
+                                value="" required>
+                        </div>
+                    </div>
+
+                    <textarea class="form-control" rows="10" placeholder="MENSAJE" name="message" required></textarea>
+
+                    <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
+                        <div class="alt-send-button">
+                            <i class="fa fa-paper-plane"></i><span class="send-text">ENVIAR</span>
+                        </div>
+                    </button>
+
+                </form>
+                <!-- Left contact page -->
+                <div class="direct-contact-container">
+                    <ul class="contact-list">
+                        <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">La Plata,
+                                    Buenos Aires</span></i></li>
+
+                        <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a
+                                        href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i>
+                        </li>
+
+                        <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a
+                                        href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
+
+                    </ul>
+
+                    <hr>
+                    <ul class="social-media-list">
+                        <li><a href="#" target="_blank" class="contact-icon">
+                                <i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#" target="_blank" class="contact-icon">
+                                <i class="fa fa-codepen" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#" target="_blank" class="contact-icon">
+                                <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#" target="_blank" class="contact-icon">
+                                <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                    <hr>
+
+                    <div class="copyright">&copy; Todos los derechos reservados</div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <button onclick="topFunction()" id="btnTop" title="Volver Arriba"> ↑ </button>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="/pages/nosotros.html">¿Quienes somos?</a></li>
+                <li><a href="/pages/faq.html">FAQs</a></li>
+            </ul>
+        </nav>
+        <p>Desarrollado por <span>Grupo22 &copy; </span> <br> Todos los derechos reservados</p>
+    </footer>
+</body>
+
+</html>
