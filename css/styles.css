@@ -211,3 +211,36 @@ footer p span {
     color: #000000;
 }
 
+
+/*----------NOSOTROS----------*/
+
+.team-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.team-member {
+    text-align: center;
+    margin: 0 20px;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.team-member p {
+    margin: 0;
+    font-size: 1em;
+    color: #666;
+}
