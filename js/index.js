@@ -8,8 +8,8 @@ function scrollFunction() {
   }
 }
 
-// Función para volver al principio de la página cuando se hace clic en el botón
+
 function topFunction() {
-  document.body.scrollTop = 0; // Para navegadores Safari
-  document.documentElement.scrollTop = 0; // Para otros navegadores
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
