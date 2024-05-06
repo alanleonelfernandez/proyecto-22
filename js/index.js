@@ -1,3 +1,11 @@
+//Banner de inicio
+window.addEventListener('scroll', function() {
+  const parallax = document.querySelector('.parallax-image');
+  let scrollPosition = window.pageYOffset;
+  parallax.style.transform = 'translateZ(-1px) scale(1.5) translateY(' + scrollPosition * 0.5 + 'px)';
+});
+
+//boton volver arriba
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -10,8 +18,8 @@ function scrollFunction() {
 
 
 function topFunction() {
-  document.body.scrollTop = 0; // Para navegadores Safari
-  document.documentElement.scrollTop = 0; // Para otros navegadores
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 // contact form
