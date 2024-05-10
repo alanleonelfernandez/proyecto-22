@@ -20,6 +20,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    transition: background-color 1s ease;
+}
+
+header .logo:hover{
+    transform: scale(1.08);
+    transition: transform 0.5s;
 }
 
 .logo{
@@ -38,6 +44,10 @@ header {
     color: white;
 }
 
+.logo a{
+    text-decoration: none;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
@@ -47,6 +57,11 @@ nav ul {
 
 nav ul li {
     margin-left: 20px;
+}
+
+nav ul li:hover {
+    transform: scale(1.08);
+    transition: transform 0.5s;
 }
 
 nav ul li a {
@@ -83,7 +98,7 @@ nav ul li a:hover {
 /*----------MAIN----------*/
 
 
-.seccion-1, .seccion-nosotros {
+.seccion-1, .seccion-nosotros, .seccion-faq {
     background-color: #f2f2f2;
     padding: 20px;
     text-align: justify;
@@ -212,12 +227,15 @@ footer p span {
     cursor: pointer;
     padding: 15px;
     border-radius: 100%;
+    width: 50px;
 }
 
 #btnTop:hover {
     background-color: #00ff7b;
     color: #000000;
 }
+
+/*----------CONTACTO----------*/
 
 
 /*----------NOSOTROS----------*/
@@ -277,3 +295,39 @@ footer p span {
     z-index: -1;
     transition: transform 1.5s ease;
   }
+
+
+/*----------PREGUNTAS FRECUENTES----------*/
+
+  .faq-panel {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.faq-panel:hover{
+    transform: scale(1.02);
+    transition: transform 0.5s;
+}
+.faq-panel-header {
+    padding: 10px;
+    cursor: pointer;
+    background: rgb(10,115,64);
+    background: linear-gradient(90deg, rgba(10,115,64,1) 0%, rgba(0,255,141,1) 100%);
+    border-bottom: 1px solid #ccc;
+    color: white;
+    font-weight: 600;
+}
+.faq-panel-header:hover {
+    background: rgb(10,115,64);
+    background: linear-gradient(90deg, rgba(0,170,219,1) 0%, rgba(0,255,141,1) 100%);
+    color: black;
+
+}
+.faq-panel-content {
+    display: none;
+    padding: 10px;
+    background-color: #ccc;
+}
+.faq-panel.open .faq-panel-content {
+    display: block;
+}

@@ -5,6 +5,16 @@ window.addEventListener('scroll', function() {
   parallax.style.transform = 'translateZ(-1px) scale(1.5) translateY(' + scrollPosition * 0.5 + 'px)';
 });
 
+//preguntas frecuentes
+document.addEventListener('DOMContentLoaded', function() {
+  var faqPanels = document.querySelectorAll('.faq-panel-header');
+  faqPanels.forEach(function(panel) {
+      panel.addEventListener('click', function() {
+          this.parentNode.classList.toggle('open');
+      });
+  });
+});
+
 //boton volver arriba
 window.onscroll = function() {scrollFunction()};
 
