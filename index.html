@@ -67,3 +67,31 @@
 </footer>
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var seccion1 = document.querySelector('.seccion-1');
+        var seccion2 = document.querySelector('.seccion-2');
+
+        function isInViewport(element) {
+            var rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function mostrarSeccion() {
+            if (isInViewport(seccion1)) {
+                seccion1.classList.add('aparecer');
+            }
+            if (isInViewport(seccion2)) {
+                seccion2.classList.add('aparecer');
+            }
+        }
+
+        window.addEventListener('scroll', mostrarSeccion);
+        mostrarSeccion(); // Para asegurar que las secciones visibles al cargar la página se animen también
+    });
+</script>
