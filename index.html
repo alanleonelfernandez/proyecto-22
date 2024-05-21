@@ -28,15 +28,20 @@
 <main>
     <div class="parallax-container">
         <img class="parallax-image" src="/img/banner2.avif" alt="Banner Image">
-        <div class="banner-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; opacity: 1;">
+        <div class="banner-message">
           <h1>¡Bienvenido!</h1>
           <p>¿Cual era el valor del AR$?</p>
         </div>
-      </div>
+    </div>
     <section class="seccion-1">
-        <h2>Sección 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula arcu a orci vestibulum, eu condimentum nisi venenatis. Fusce aliquet erat magna, in congue purus convallis id. Nulla facilisi. Donec ac consequat dolor. Donec tincidunt, ex nec blandit ultrices, magna metus posuere est, vel molestie sapien dolor eu lectus. Morbi id hendrerit lectus. Aliquam eu arcu ultricies, euismod turpis et, volutpat leo. Sed vitae eros vitae turpis viverra feugiat sit amet nec libero. Nulla facilisi.</p>
-        <p>Sed sollicitudin efficitur ullamcorper. Morbi rutrum, leo vitae congue tempus, urna lorem finibus nisl, in efficitur sem nisi ac dolor. Proin ut ultricies metus. Sed auctor, odio eget ullamcorper aliquam, est ipsum tristique libero, sit amet fermentum quam orci non dolor. Mauris nec quam eu nunc faucibus aliquet. Mauris et consequat ligula.</p>
+        <h2>Valor historico del Dolar en Argentina: PROXIMAMENTE</h2>
+        <p>Muy pronto tendremos la herramienta de conversion de Peso-Dolar o Dolar-Peso con valores historicos que datan de principios de los 2000s. Este tipo de conversion historica permitira ver la movilidad de la inflacion respecto a monedas extranjeras a lo largo de los ultimos años, y asi utilizarlo para poner en comparativa costos de productos y servicios con el paso del tiempo.</p>
+        <p>Actualmente la herramienta se encuentra en desarrollo, ante cualquier consulta o sugerencia no dudes en contactarnos <a href="/pages/contacto.html">aqui.</a></p>
+    </section>
+
+    <section class="dolar-section">
+        <h2>Valores del Dolar actualizados al&nbsp;<span id="current-date"></span>:</h2>
+        <div id="dolar-container"></div>
     </section>
     
     <section class="seccion-2">
@@ -51,7 +56,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi distinctio architecto quas quod, corrupti quam eum, qui eaque, nostrum debitis accusamus nisi laboriosam atque. Sed cupiditate quibusdam eligendi possimus labore?.</p>
         </div>
     </section>
-    
+
     <button onclick="topFunction()" id="btnTop" title="Volver Arriba"> ↑ </button>
 </main>
 <footer>
@@ -67,31 +72,3 @@
 </footer>
 </body>
 </html>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var seccion1 = document.querySelector('.seccion-1');
-        var seccion2 = document.querySelector('.seccion-2');
-
-        function isInViewport(element) {
-            var rect = element.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-
-        function mostrarSeccion() {
-            if (isInViewport(seccion1)) {
-                seccion1.classList.add('aparecer');
-            }
-            if (isInViewport(seccion2)) {
-                seccion2.classList.add('aparecer');
-            }
-        }
-
-        window.addEventListener('scroll', mostrarSeccion);
-        mostrarSeccion(); // Para asegurar que las secciones visibles al cargar la página se animen también
-    });
-</script>
