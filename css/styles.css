@@ -105,6 +105,8 @@ nav ul li a:hover {
     background-color: #f2f2f2;
     padding: 20px;
     text-align: justify;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 .seccion-2 {
@@ -112,7 +114,9 @@ nav ul li a:hover {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    padding-left: 80px;
+    padding-right: 80px; 
 }
 
 
@@ -148,6 +152,12 @@ nav ul li a:hover {
 }
 
 @media (max-width: 768px) {
+
+    .seccion-1, .seccion-2{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
     .seccion-2 div {
         width: 100%;
     }
@@ -372,6 +382,7 @@ footer p span {
     display: flex;
     justify-content: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    word-spacing: normal;
 }
 
 #dolar-container {
@@ -401,6 +412,7 @@ footer p span {
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
     transform: scale(1.05);
     transition: transform 1.3s;
+    font-weight: 600;
 }
 
 .dolar-item h3 {
@@ -408,8 +420,8 @@ footer p span {
 }
 .dolar-item p {
     margin: 0;
-    font-weight: 600;
 }
+
 @media(min-width: 768px) {
     .dolar-item {
         width: calc(50% - 40px);
