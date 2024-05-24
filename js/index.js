@@ -5,8 +5,8 @@ window.addEventListener('scroll', function() {
   parallax.style.transform = 'translateZ(-1px) scale(1.5) translateY(' + scrollPosition * 0.5 + 'px)';
 });
 
-//preguntas frecuentes
 document.addEventListener('DOMContentLoaded', function() {
+  //preguntas frecuentes
   var faqPanels = document.querySelectorAll('.faq-panel-header');
   faqPanels.forEach(function(panel) {
       panel.addEventListener('click', function() {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 
-//difuminado de secciones
+  //difuminado de secciones
   var seccion1 = document.querySelector('.seccion-1');
   var seccion2 = document.querySelector('.seccion-2');
   function isInViewport(element) {
@@ -79,17 +79,7 @@ function scrollFunction() {
   }
 }
 
-
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
-
-// contact form
-document.querySelector('#contact-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  e.target.elements.name.value = '';
-  e.target.elements.email.value = '';
-  e.target.elements.message.value = '';
-});
-

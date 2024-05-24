@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto | CheDólar</title>
+    <link rel="icon" href="/img/icon-dolar.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/contacto.css">
     <script src="/js/index.js"></script>
@@ -21,94 +22,116 @@
         <nav>
             <ul>
                 <li><a href="/index.html">Inicio</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="/pages/contacto.html">Contacto</a></li>
                 <li><a href="/pages/nosotros.html">¿Quiénes somos?</a></li>
                 <li><a href="/pages/faq.html">FAQs</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="contact">
-            <h1 class="section-header">Contacto</h1>
-            <div class="contact-wrapper">
-                <!-- Left contact page -->
-                <form id="contact-form" class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" value=""
-                                required>
-                        </div>
-                    </div>
+        <div class="container formContacto">
+            <h1>Contacto</h1>
+            <form id="contactForm">
+                <label for="nombre">Nombre y Apellido:</label>
+                <input type="text" id="nombre" name="nombre">
+                <span class="error-message" id="error-nombre"></span>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <span class="error-message" id="error-email"></span>
+    
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono">
+                <span class="error-message" id="error-telefono"></span>
+    
+                <label for="asunto">Asunto:</label>
+                <select id="asunto" name="asunto">
+                    <option value="" disabled selected>Seleccione una opcion</option>
+                    <option value="consulta">Consulta</option>
+                    <option value="sugerencia">Sugerencia</option>
+                    <option value="queja">Queja</option>
+                </select>
+                <span class="error-message" id="error-asunto"></span>
+    
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+                <span class="error-message" id="error-mensaje"></span>
+    
+                <label for="acepto">
+                    <input type="checkbox" id="acepto" name="acepto">
+                    Acepto los términos y condiciones
+                </label>
+                <span class="error-message" id="error-acepto"></span>
+    
+                <img src="/img/recaptcha.png" alt="Imagen seguridad" class="imagen-seguridad">
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <input type="email" class="form-control" id="email" placeholder="Correo" name="email"
-                                value="" required>
-                        </div>
-                    </div>
-
-                    <textarea class="form-control" rows="10" placeholder="MENSAJE" name="message" required></textarea>
-
-                    <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-                        <div class="alt-send-button">
-                            <i class="fa fa-paper-plane"></i><span class="send-text">ENVIAR</span>
-                        </div>
-                    </button>
-
-                </form>
-                <!-- Left contact page -->
-                <div class="direct-contact-container">
-                    <ul class="contact-list">
-                        <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">La Plata,
-                                    Buenos Aires</span></i></li>
-
-                        <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a
-                                        href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i>
-                        </li>
-
-                        <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a
-                                        href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
-
-                    </ul>
-
-                    <hr>
-                    <h4>Seguinos en redes para no perderte novedades</h4>
-                    <ul class="social-media-list">
-                        <li><a href="https://github.com/alanleonelfernandez/proyecto-22/tree/master" target="_blank" class="contact-icon">
-                                <i class="fa fa-github" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#" target="_blank" class="contact-icon">
-                                <i class="fa fa-codepen" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#" target="_blank" class="contact-icon">
-                                <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#" target="_blank" class="contact-icon">
-                                <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-                    <hr>
-
-                    <div class="copyright">&copy; Todos los derechos reservados</div>
-
-                </div>
-
-            </div>
-
-        </section>
         <button onclick="topFunction()" id="btnTop" title="Volver Arriba"> ↑ </button>
     </main>
     <footer>
         <nav>
             <ul>
                 <li><a href="/index.html">Inicio</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="/pages/contacto.html">Contacto</a></li>
                 <li><a href="/pages/nosotros.html">¿Quiénes somos?</a></li>
                 <li><a href="/pages/faq.html">FAQs</a></li>
             </ul>
         </nav>
-        <p>Desarrollado por <span>Grupo22 &copy; </span> <br> Todos los derechos reservados</p>
+        <p>Desarrollado por <span>Grupo22©</span></p>
     </footer>
 </body>
-
 </html>
+<script>
+//Contacto
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    document.querySelectorAll('.error-message').forEach(function(el) {
+        el.textContent = '';
+    });
+  
+    let hasError = false;
+  
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const asunto = document.getElementById('asunto').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
+    const acepto = document.getElementById('acepto').checked;
+  
+    if (!nombre) {
+        document.getElementById('error-nombre').textContent = 'Por favor, ingresa tu nombre.';
+        hasError = true;
+    }
+    if (!email || !validateEmail(email)) {
+        document.getElementById('error-email').textContent = 'Por favor, ingresa un correo electrónico válido.';
+        hasError = true;
+    }
+    if (!telefono) {
+        document.getElementById('error-telefono').textContent = 'Por favor, ingresa tu número de teléfono.';
+        hasError = true;
+    }
+    if (!asunto) {
+        document.getElementById('error-asunto').textContent = 'Por favor, selecciona un asunto.';
+        hasError = true;
+    }
+    if (!mensaje) {
+        document.getElementById('error-mensaje').textContent = 'Por favor, ingresa tu mensaje.';
+        hasError = true;
+    }
+    if (!acepto) {
+        document.getElementById('error-acepto').textContent = 'Debes aceptar los términos y condiciones.';
+        hasError = true;
+    }
+    if (!hasError) {
+        setTimeout(function() {
+            window.location.href = 'landing_nueva.html';
+        }, 1500);
+    }
+  });
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+</script>
