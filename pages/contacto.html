@@ -33,15 +33,15 @@
             <h1>Contacto</h1>
             <form id="contactForm">
                 <label for="nombre">Nombre y Apellido:</label>
-                <input type="text" id="nombre" name="nombre">
+                <input type="text" id="nombre" name="nombre" maxlength="60">
                 <span class="error-message" id="error-nombre"></span>
     
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" maxlength="60">
                 <span class="error-message" id="error-email"></span>
     
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono">
+                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Por favor, ingresa un número de teléfono válido" required maxlength="10">
                 <span class="error-message" id="error-telefono"></span>
     
                 <label for="asunto">Asunto:</label>
@@ -54,7 +54,7 @@
                 <span class="error-message" id="error-asunto"></span>
     
                 <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+                <textarea id="mensaje" name="mensaje" rows="4" maxlength="200"></textarea>
                 <span class="error-message" id="error-mensaje"></span>
     
                 <label for="acepto">
@@ -126,7 +126,7 @@
     }
     if (!hasError) {
         setTimeout(function() {
-            window.location.href = 'landing_nueva.html';
+            window.location.href = '/pages/page-exito.html';
         }, 1500);
     }
   });
