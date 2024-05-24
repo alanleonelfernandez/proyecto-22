@@ -100,6 +100,12 @@ nav ul li a:hover {
 
 /*----------MAIN----------*/
 
+.texto-destacado {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color:  rgba(10,115,64,1);
+    
+}
 
 .seccion-1, .seccion-nosotros, .seccion-faq {
     background-color: #f2f2f2;
