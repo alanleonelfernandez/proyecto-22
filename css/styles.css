@@ -21,14 +21,15 @@ header {
     align-items: center;
     padding: 10px 20px;
     transition: background-color 1s ease;
+    position: relative; /* Ensure content inside header is positioned correctly */
 }
 
-header .logo:hover{
+header .logo:hover {
     transform: scale(1.08);
     transition: transform 0.5s;
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
 }
@@ -45,8 +46,17 @@ header .logo:hover{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.logo a{
+.logo a {
     text-decoration: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+    transition: max-height 0.5s ease;
+    overflow: hidden;
 }
 
 nav ul {
@@ -54,6 +64,7 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
 }
 
 nav ul li {
@@ -77,26 +88,73 @@ nav ul li a:hover {
     color: #333;
 }
 
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px; /* Increase size */
+    cursor: pointer;
+    margin-right: 10px; /* Ensure it is not too far to the right */
+}
+
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
     }
 
     .logo {
-        margin-bottom: 10px;
+        margin-bottom: 0;
+    }
+
+    nav {
+        max-height: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background: rgba(10, 115, 64, 0.9);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        transition: max-height 0.5s ease;
     }
 
     nav ul {
         flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
     }
 
     nav ul li {
         margin-left: 0;
         margin-bottom: 10px;
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 10px 20px;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+        align-self: flex-end;
+        margin-right: 30px;
+    }
+
+    nav.active {
+        max-height: 300px; /* Adjust this value according to the number of menu items */
     }
 }
-
 
 /*----------MAIN----------*/
 

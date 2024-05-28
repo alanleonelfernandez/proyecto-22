@@ -17,7 +17,10 @@
             <img src="/img/dolar.png" alt="Logo">
             <a href="index.html"><h1>CheDólar</h1></a>
         </div>
-        <nav>
+        <button class="hamburger" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </button>
+        <nav id="navbar">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="pages/contacto.html">Contacto</a></li>
@@ -80,3 +83,9 @@
 </footer>
 </body>
 </html>
+<script>
+    function toggleMenu(){
+        var navbar = document.getElementById('navbar');
+        navbar.classList.toggle('active');
+    }
+</script>
