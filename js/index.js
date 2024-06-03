@@ -1,3 +1,9 @@
+function toggleMenu() {
+  var navbars = document.querySelectorAll('.navbar');
+  navbars.forEach(navbar => {
+    navbar.classList.toggle('active');
+  });
+}
 //Banner de inicio
 window.addEventListener('scroll', function() {
   const parallax = document.querySelector('.parallax-image');
