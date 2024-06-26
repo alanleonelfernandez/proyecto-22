@@ -28,14 +28,22 @@ create table usuarios
 
 create table moneda
 (
-	id_moneda  varchar(5) not null primary key, 
+	id_moneda  varchar(6) not null primary key, 
     nombre     varchar(30) not null
 );
 
 INSERT INTO moneda (id_moneda, nombre) VALUES ('ARS', 'Peso Argentino');
 INSERT INTO moneda (id_moneda, nombre) VALUES ('USD', 'Dólar (oficial)');
-INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDB', 'Dólar (blue)');
-INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDM', 'Dólar (MEP)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDBL', 'Dólar (blue)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDBO', 'Dólar (bolsa)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDCR', 'Dólar (cripto)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDMA', 'Dólar (mayorista)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDSO', 'Dólar (solidario)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDTU', 'Dólar (turista)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDTA', 'Dólar (tarjeta)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDCL', 'Dólar (contado con liqui)');
+
+
 
 create table tipo_operacion
 (
