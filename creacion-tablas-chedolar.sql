@@ -41,7 +41,7 @@ INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDMA', 'Dólar (mayorista)');
 INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDSO', 'Dólar (solidario)');
 INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDTU', 'Dólar (turista)');
 INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDTA', 'Dólar (tarjeta)');
-INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDCL', 'Dólar (contado con liquidaciones)');
+INSERT INTO moneda (id_moneda, nombre) VALUES ('XUSDCL', 'Dólar (contado con liqui)');
 
 
 
