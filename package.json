@@ -1,0 +1,26 @@
+{
+  "name": "chedolar",
+  "version": "1.0.0",
+  "description": "Cotizacion historica del dolar",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanleonelfernandez/proyecto-22.git"
+  },
+  "author": "Alan Fernandez / Matias Arpon / Horacio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanleonelfernandez/proyecto-22/issues"
+  },
+  "homepage": "https://github.com/alanleonelfernandez/proyecto-22#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
