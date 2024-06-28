@@ -699,3 +699,83 @@ div ul li a:hover {
     font-size: 0.8em;
     color: #555;
 }
+
+/*----------DOLAR HISTORICO----------*/
+
+.cotizacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #eee;
+}
+.cotizacionCaja {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    font-weight: bold;
+}
+
+.cotizacionCaja:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.cotizacionCaja h2 {
+    margin-bottom: 20px;
+}
+.cotizacionCaja form {
+    display: flex;
+    flex-direction: column;
+}
+.cotizacionCaja .fecha {
+    display: flex;
+    justify-content: space-between;
+}
+.cotizacionCaja .fecha {
+    display: flex;
+    justify-content: space-between;
+}
+.cotizacionCaja .fecha .campo {
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+}
+.cotizacionCaja label {
+    margin-top: 10px;
+}
+.cotizacionCaja input, select, button {
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.cotizacionCaja button {
+    background: rgb(10,115,64);
+    background: linear-gradient(90deg, rgba(10,115,64,1) 0%, rgba(0,255,141,1) 100%);
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.cotizacionCaja button:hover {
+    background: rgb(0,170,219);
+    background: linear-gradient(90deg, rgba(0,170,219,1) 0%, rgba(0,255,141,1) 100%);
+    color: #333;
+}
+#resultado {
+    margin-top: 20px;
+    text-align: left;
+}
+@media (max-width: 400px) {
+    .cotizacionCaja .fecha {
+        flex-direction: column;
+    }
+    .cotizacionCaja .fecha input {
+        width: 100%;
+    }
+}

@@ -31,33 +31,40 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <h2>Consultar Cotización del Dólar</h2>
-        <form id="cotizacionForm">
-            <label for="dia">Día:</label>
-            <input type="number" id="dia" name="dia" min="1" max="31" required>
-            
-            <label for="mes">Mes:</label>
-            <input type="number" id="mes" name="mes" min="1" max="12" required>
-            
-            <label for="anio">Año:</label>
-            <input type="number" id="anio" name="anio" min="2000" max="2100" required>
-            
-            <label for="casa">Tipo de cambio:</label>
-            <select id="casa" name="casa" required>
-                <option value="oficial">Oficial</option>
-                <option value="blue">Blue</option>
-                <option value="bolsa">Bolsa</option>
-                <option value="crypto">Crypto</option>
-                <option value="mayorista">Mayorista</option>
-                <option value="solidario">Solidario</option>
-                <option value="turista">Turista</option>
-            </select>
-            
-            <button type="submit">Consultar</button>
-        </form>
-        <div id="resultado"></div>
-
+    <main class="cotizacion">
+        <div class="cotizacionCaja">
+            <h2>Consultar Cotización del Dólar</h2>
+            <form id="cotizacionForm">
+                <div class="fecha">
+                    <div class="campo">
+                        <label for="dia">Día:</label>
+                        <input type="number" id="dia" name="dia" min="1" max="31" required>
+                    </div>
+                    <div class="campo">
+                        <label for="mes">Mes:</label>
+                        <input type="number" id="mes" name="mes" min="1" max="12" required>
+                    </div>
+                    <div class="campo">
+                        <label for="anio">Año:</label>
+                        <input type="number" id="anio" name="anio" min="2011" max="2100" required>
+                    </div>
+                </div>
+                
+                <label for="casa">Tipo de cambio:</label>
+                <select id="casa" name="casa" required>
+                    <option value="oficial">Oficial</option>
+                    <option value="blue">Blue</option>
+                    <option value="bolsa">Bolsa</option>
+                    <option value="crypto">Crypto</option>
+                    <option value="mayorista">Mayorista</option>
+                    <option value="solidario">Solidario</option>
+                    <option value="turista">Turista</option>
+                </select>
+                
+                <button type="submit">Consultar</button>
+            </form>
+            <div id="resultado"></div>
+        </div>
         <button onclick="topFunction()" id="btnTop" title="Volver Arriba"> ↑ </button>
     </main>
     <footer>
