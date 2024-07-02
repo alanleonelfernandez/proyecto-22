@@ -1,18 +1,16 @@
-const express = require('express')
-const app = express()
-const port = 5000;
+const express = require('express');
+
+const usuariosRoutes = require('./src/routes/usuariosRoutes');
+
+const app = express();
+
+app.use(express.json());
+app.use('/usuarios', usuariosRoutes);
+
+const port = 3000;
 
 
-app.get('/home',(req, res)=>{
-    res.send("Hola")
-});
 
-//Middleware
-app.use(express.static('public'));
-
-app.get('/index',(req, res)=>{
-    res.sendFile(__dirname+"./public/index.html")
-});
 
 app.listen(port, ()=>{
     console.log(`Servidor encendido en http://localhost:${port}/`);
