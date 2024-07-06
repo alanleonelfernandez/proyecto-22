@@ -98,6 +98,21 @@ nav ul li a:hover {
     margin-right: 10px; /* Ensure it is not too far to the right */
 }
 
+.login-icon{
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.login-icon a {
+    font-size: 28px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.login-icon a:hover {
+    color: #333;
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: row;
@@ -777,5 +792,137 @@ div ul li a:hover {
     }
     .cotizacionCaja .fecha input {
         width: 100%;
+    }
+}
+
+/*----------LOGIN/REGISTER----------*/
+
+.formLogin {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formLogin:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.formLogin h1 {
+    text-align: center;
+    color: #333;
+}
+
+.formLogin form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formLogin label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.formLogin input, select, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.formLogin input[type="checkbox"] {
+    margin-top: 0;
+}
+
+.formLogin button {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgb(10,115,64);
+    background: linear-gradient(90deg, rgba(10,115,64,1) 0%, rgba(0,255,141,1) 100%);
+    color: #eee;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formLogin button:hover {
+    background: rgb(0,170,219);
+    background: linear-gradient(90deg, rgba(0,170,219,1) 0%, rgba(0,255,141,1) 100%);
+    color: #333;
+}
+
+.formLogin .imagen-seguridad {
+    display: block;
+    margin: 20px auto 0;
+    width: 100%;
+    max-width: 180px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 5px;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab button {
+    background: #eee;
+    color: #333;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    flex: 1;
+    border-radius: 0;
+}
+
+.tab button:hover {
+    background: rgb(0,170,219);
+    background: linear-gradient(90deg, rgba(0,170,219,1) 0%, rgba(0,255,141,1) 100%);
+    color: #000;
+}
+
+.tab button.active {
+    background: #ccc;
+    color: #333;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+@media (max-width: 600px) {
+    .formLogin {
+        padding: 15px;
+        margin: 20px;
+    }
+
+    .formLogin input, select, textarea {
+        padding: 8px;
+    }
+
+    .formLogin button {
+        padding: 10px;
+    }
+
+    .formLogin .imagen-seguridad {
+        width: 100%;
+        max-width: 100%;
     }
 }
