@@ -43,7 +43,7 @@
                     <span class="error-message" id="error-email"></span>
 
                     <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" pattern="[0-9]{10}" title="Ingrese su clave" required maxlength="10">
+                    <input type="password" id="password" name="password" pattern="[0-9]{5,10}" title="Ingrese su clave" required maxlength="10">
                     <span class="error-message" id="error-password"></span>
 
                     <button type="submit">Ingresar</button>
@@ -96,90 +96,128 @@
 </html>
 
 <script>
-// Función para abrir la pestaña correspondiente
-function openForm(evt, formName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    // Función para abrir la pestaña correspondiente
+    function openForm(evt, formName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(formName).style.display = "block";
+        evt.currentTarget.className += " active";
     }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(formName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
+    
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+    
+        const data = {
+            email: email,
+            password: password
+        };
+    
+        const apiUrl = 'http://localhost:3000';
 
-// Validación y envío del formulario de login
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    document.querySelectorAll('.error-message').forEach(function(el) {
-        el.textContent = '';
+        fetch(`${apiUrl}/usuarios/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Autenticación exitosa') {
+                localStorage.setItem('token', data.token);
+                window.location.href = '/pages/page-loginok.html';
+            } else {
+                window.location.href = '/pages/page-loginerr.html';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema al iniciar sesión');
+            window.location.href = '/pages/page-loginerr.html';
+        });
     });
-
-    let hasError = false;
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
-
-    if (!email || !validateEmail(email)) {
-        document.getElementById('error-email').textContent = 'Por favor, ingresa un correo electrónico válido.';
-        hasError = true;
-    }
-    if (!password) {
-        document.getElementById('error-password').textContent = 'Contraseña incorrecta.';
-        hasError = true;
-    }
-    if (!hasError) {
-        setTimeout(function() {
-            window.location.href = '/pages/page-exito.html';
-        }, 1500);
-    }
-});
-
-// Validación y envío del formulario de registro
-document.getElementById('registerForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    document.querySelectorAll('.error-message').forEach(function(el) {
-        el.textContent = '';
+    
+    // Validación y envío del formulario de registro
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        document.querySelectorAll('.error-message').forEach(function(el) {
+            el.textContent = '';
+        });
+    
+        let hasError = false;
+        const nombre = document.getElementById('reg-nombre').value.trim();
+        const apellido = document.getElementById('reg-apellido').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const password = document.getElementById('reg-password').value.trim();
+        const confirmPassword = document.getElementById('reg-confirm-password').value.trim();
+    
+        if (!nombre) {
+            document.getElementById('error-reg-nombre').textContent = 'Por favor, ingresa tu nombre.';
+            hasError = true;
+        }
+        if (!apellido) {
+            document.getElementById('error-reg-apellido').textContent = 'Por favor, ingresa tu apellido.';
+            hasError = true;
+        }
+        if (!email || !validateEmail(email)) {
+            document.getElementById('error-reg-email').textContent = 'Por favor, ingresa un correo electrónico válido.';
+            hasError = true;
+        }
+        if (!password) {
+            document.getElementById('error-reg-password').textContent = 'Contraseña incorrecta.';
+            hasError = true;
+        }
+        if (password !== confirmPassword) {
+            document.getElementById('error-reg-confirm-password').textContent = 'Las contraseñas no coinciden.';
+            hasError = true;
+        }
+        if (!hasError) {
+            setTimeout(function() {
+    
+            const data_usuario = {
+                nombre: nombre,
+                apellido: apellido,
+                email: email,
+                password: password
+            };
+    
+            const apiUrl = 'http://localhost:3000';
+    
+            fetch(`${apiUrl}/usuarios`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data_usuario)
+            })
+            .then(response => response.json())
+            .then(data_usuario => {
+                if (data_usuario.message) {
+                    window.location.href = '/pages/page-regok.html';
+                } else {
+                    alert('Error al crear el usuario');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                window.location.href = '/pages/page-loginerr.html';
+            });
+            }, 1500);
+        }
     });
-
-    let hasError = false;
-    const nombre = document.getElementById('reg-nombre').value.trim();
-    const apellido = document.getElementById('reg-apellido').value.trim();
-    const email = document.getElementById('reg-email').value.trim();
-    const password = document.getElementById('reg-password').value.trim();
-    const confirmPassword = document.getElementById('reg-confirm-password').value.trim();
-
-    if (!nombre) {
-        document.getElementById('error-reg-nombre').textContent = 'Por favor, ingresa tu nombre.';
-        hasError = true;
+    
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
     }
-    if (!apellido) {
-        document.getElementById('error-reg-apellido').textContent = 'Por favor, ingresa tu apellido.';
-        hasError = true;
-    }
-    if (!email || !validateEmail(email)) {
-        document.getElementById('error-reg-email').textContent = 'Por favor, ingresa un correo electrónico válido.';
-        hasError = true;
-    }
-    if (!password) {
-        document.getElementById('error-reg-password').textContent = 'Contraseña incorrecta.';
-        hasError = true;
-    }
-    if (password !== confirmPassword) {
-        document.getElementById('error-reg-confirm-password').textContent = 'Las contraseñas no coinciden.';
-        hasError = true;
-    }
-    if (!hasError) {
-        setTimeout(function() {
-            window.location.href = '/pages/page-exito.html';
-        }, 1500);
-    }
-});
-
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
-</script>
+    </script>

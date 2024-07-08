@@ -6,7 +6,7 @@ create table usuarios
 (
    id_usuario   serial not null, 
    email        varchar(100) not null,
-   password		varchar(30),
+   password		varchar(100),
    nombre		varchar(30) not null, 
    apellido     varchar(30) not null,
    id_tipo_usuario varchar(1) NULL DEFAULT 'U',
