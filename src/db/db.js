@@ -31,7 +31,7 @@ connection.connect((err) => {
                 CREATE TABLE IF NOT EXISTS usuarios (
                     id_usuario SERIAL NOT NULL, 
                     email VARCHAR(100) NOT NULL,
-                    password VARCHAR(30),
+                    password VARCHAR(100),
                     nombre VARCHAR(30), 
                     apellido VARCHAR(30),
                     id_tipo_usuario VARCHAR(1) NOT NULL,

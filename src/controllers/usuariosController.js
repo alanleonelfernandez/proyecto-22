@@ -1,8 +1,9 @@
 const db = require('../db/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
 
-const jwtSecret = 'ALANF';
+const secret = process.env.SECRET;
 
 const getAllUsuarios = (req, res) => {
     const sql = 'SELECT * FROM usuarios';
@@ -69,7 +70,7 @@ const authenticateUsuario = (req, res) => {
             return res.status(401).json({ message: 'Contraseña incorrecta' });
         }
         // Generar token JWT
-        const token = jwt.sign({ userId: user.id_usuario }, jwtSecret, { expiresIn: '5m' });
+        const token = jwt.sign({ userId: user.id_usuario }, secret, { expiresIn: '5m' });
         res.json({ message: 'Autenticación exitosa', token: token });
     });
 };
@@ -80,5 +81,5 @@ module.exports = {
     createUsuario,
     updateUsuario,
     deleteUsuario,
-    authenticateUsuario
+    authenticateUsuario,
 };

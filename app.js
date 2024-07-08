@@ -15,12 +15,15 @@ app.use(express.json());
 app.use('/usuarios', usuariosRoutes);
 app.use(express.static(path.join(__dirname,'public')));
 //RUTA PRINCIPAL
-app.get('/',(req,res)=> res.sendFile(path.join(__dirname,'public','index.html')))
-
+app.get('/',(req,res)=> res.sendFile(path.join(__dirname,'public','index.html')));
+//Ruta 404
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'public', 'pages', 'page-404.html'));
+});
+//Auth jwt
 app.get('/pages/page-loginok.html', authenticateJWT, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'pages', 'page-loginok.html'));
 });
-
 
 app.listen(port, ()=>{
     console.log(`Servidor encendido en http://localhost:${port}/`);
