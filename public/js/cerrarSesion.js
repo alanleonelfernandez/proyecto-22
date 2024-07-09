@@ -1,3 +1,10 @@
+function checkSession() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = '/pages/page-403.html';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const loginIcon = document.getElementById('loginIcon');
     const token = localStorage.getItem('token');
