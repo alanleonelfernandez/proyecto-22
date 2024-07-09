@@ -502,7 +502,8 @@ div ul li a:hover {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background: #eee;
+    background: linear-gradient(90deg, #eee 0%, #bbb 100%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -801,20 +802,51 @@ div ul li a:hover {
 
 .cotizacion {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
     background-color: #eee;
-}
-.cotizacionCaja {
-    background-color: white;
     padding: 20px;
+}
+
+.botones-perfil {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.botones-perfil h1 {
+    margin-bottom: 20px;
+}
+
+.botones-perfil div {
+    margin: 10px 0;
+}
+
+.botones-perfil a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background: rgb(0,170,219);
+    background: linear-gradient(90deg, rgba(0,170,219,1) 0%, rgba(0,255,141,1) 100%);
+    color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.botones-perfil a:hover {
+    background: rgb(10,115,64);
+    background: linear-gradient(90deg, rgba(10,115,64,1) 0%, rgba(0,255,141,1) 100%);
+    color: #eee;
+}
+
+.cotizacionCaja {
+    text-align: center;
+    background-color: #fff;
+    padding: 10px 20px 0 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-    font-weight: bold;
 }
 
 .cotizacionCaja:hover{

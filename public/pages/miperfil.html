@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil - CheDólar</title>
+    <title>Contacto | CheDólar</title>
     <link rel="icon" href="https://i.ibb.co/Z6YYxth/icon-dolar.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/animaciones.js"></script>
+    <script src="../js/cerrarSesion.js"></script>
+    <script src="../js/animaciones.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-<header>
+    <header>
         <div class="logo">
             <img src="https://i.ibb.co/SBMH552/dolar.png" alt="Logo">
             <a href="../index.html"><h1>CheDólar</h1></a>
@@ -23,49 +26,98 @@
                 <li><a href="/index.html">Inicio</a></li>
                 <li><a href="/pages/contacto.html">Contacto</a></li>
                 <li><a href="/pages/nosotros.html">¿Quiénes somos?</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li class="login-icon"><a href="/pages/login.html"><i class="fa fa-user-circle"></i></a></li>
+                <li><a href="/pages/faq.html">FAQs</a></li>
+                <li class="login-icon"><a href="/pages/login.html" id="loginIcon"><i class="fa fa-user-circle"></i></a></li>
             </ul>
         </nav>
-</header>
-<main>
-    <div class="container formPerfil">
-        <h1>Editar perfil</h1>
-        <form id="perfilForm">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" maxlength="60" required>
-            <span class="error-message" id="error-nombre"></span>
-            
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" maxlength="60" required>
-            <span class="error-message" id="error-apellido"></span>
+    </header>
+    <main class="cotizacion">
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" maxlength="60" required>
-            <span class="error-message" id="error-email"></span>
+        <div class="botones-perfil">
+            <h1>Bienvenido {nombre}!</h1>
+            <div>
+                <a href="edit-perfil.html">Editar mi Perfil</a>
+            </div>
+            <div>
+                <a href="#" disabled style="opacity: 0.5;">Mi Cuenta en USD<br>(proximamente)</a>
+            </div>
+        </div>
 
-            <label for="oldPassword">Contraseña Anterior:</label>
-            <input type="password" id="oldPassword" name="oldPassword" maxlength="10" required>
-            
-            <label for="password">Nueva Contraseña:</label>
-            <input type="password" id="password" name="password" maxlength="10">
-            
-            <button type="submit">Guardar Cambios</button>
-        </form>
-    </div>
-    <button onclick="topFunction()" id="btnTop" title="Volver Arriba"> ↑ </button>
-</main>
-<footer>
-    <div>
-        <ul>
-            <li><a href="/index.html">Inicio</a></li>
-            <li><a href="/pages/contacto.html">Contacto</a></li>
-            <li><a href="/pages/nosotros.html">¿Quiénes somos?</a></li>
-            <li><a href="#">FAQs</a></li>
-        </ul>
-    </div>
-    <p>Desarrollado por <span>Grupo22©</span></p>
-</footer>
-<script src="../js/mipefil.js"></script>
+        <div class="cotizacionCaja">
+            <h2>Consultar Cotización del Dólar</h2>
+            <form id="cotizacionForm">
+                <div class="fecha">
+                    <div class="campo">
+                        <label for="dia">Día:</label>
+                        <input type="number" id="dia" name="dia" min="1" max="31" required>
+                    </div>
+                    <div class="campo">
+                        <label for="mes">Mes:</label>
+                        <input type="number" id="mes" name="mes" min="1" max="12" required>
+                    </div>
+                    <div class="campo">
+                        <label for="anio">Año:</label>
+                        <input type="number" id="anio" name="anio" min="2011" max="2100" required>
+                    </div>
+                </div>
+                
+                <label for="casa">Tipo de cambio:</label>
+                <select id="casa" name="casa" required>
+                    <option value="oficial">Oficial</option>
+                    <option value="blue">Blue</option>
+                    <option value="bolsa">Bolsa</option>
+                    <option value="crypto">Crypto</option>
+                    <option value="mayorista">Mayorista</option>
+                    <option value="solidario">Solidario</option>
+                    <option value="turista">Turista</option>
+                </select>
+                
+                <button type="submit">Consultar</button>
+            </form>
+            <div id="resultado"></div>
+        </div>
+        <button onclick="topFunction()" id="btnTop" title="Volver Arriba"> ↑ </button>
+    </main>
+    <footer>
+        <div>
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="/pages/contacto.html">Contacto</a></li>
+                <li><a href="/pages/nosotros.html">¿Quiénes somos?</a></li>
+                <li><a href="/pages/faq.html">FAQs</a></li>
+            </ul>
+        </div>
+        <p>Desarrollado por <span>Grupo22©</span></p>
+    </footer>
+    
+    <script>
+        document.getElementById('cotizacionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const dia = document.getElementById('dia').value;
+            const mes = document.getElementById('mes').value;
+            const anio = document.getElementById('anio').value;
+            const casa = document.getElementById('casa').value;
+
+            if (dia && mes && anio && casa) {
+                const fecha = `${anio}/${mes.padStart(2, '0')}/${dia.padStart(2, '0')}`;
+                fetch(`https://api.argentinadatos.com/v1/cotizaciones/dolares/${casa}/${fecha}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const resultadoDiv = document.getElementById('resultado');
+                        resultadoDiv.innerHTML = `
+                            <p><strong>Fecha: ${data.fecha}</strong></p>
+                            <p><strong>Tipo: ${data.casa}</strong></p>
+                            <p><strong>Compra: $ ${data.compra}</strong></p>
+                            <p><strong>Venta: $ ${data.venta}</strong></p>
+                        `;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        const resultadoDiv = document.getElementById('resultado');
+                        resultadoDiv.innerHTML = '<p>Error al obtener los datos. Por favor, intente de nuevo más tarde.</p>';
+                    });
+            }
+        });
+    </script>
 </body>
 </html>

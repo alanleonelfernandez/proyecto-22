@@ -45,6 +45,28 @@ const updateUsuario = (req, res) => {
     });
 };
 
+const updatePassword = (req, res) => {
+    const { id } = req.params;
+    const { oldPassword, newPassword } = req.body;
+    const sql = 'SELECT * FROM usuarios WHERE id_usuario = ?';
+    db.query(sql, [id], (err, results) => {
+        if (err) throw err;
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+        const user = results[0];
+        if (!bcrypt.compareSync(oldPassword, user.password)) {
+            return res.status(401).json({ message: 'Contraseña anterior incorrecta' });
+        }
+        const hashedNewPassword = bcrypt.hashSync(newPassword, 10);
+        const updateSql = 'UPDATE usuarios SET password = ? WHERE id_usuario = ?';
+        db.query(updateSql, [hashedNewPassword, id], (err, result) => {
+            if (err) throw err;
+            res.json({ message: 'Contraseña actualizada' });
+        });
+    });
+};
+
 const deleteUsuario = (req, res) => {
     const { id } = req.params;
     const sql = 'DELETE FROM usuarios WHERE id_usuario = ?';
@@ -71,7 +93,7 @@ const authenticateUsuario = (req, res) => {
         }
         // Generar token JWT
         const token = jwt.sign({ userId: user.id_usuario }, secret, { expiresIn: '5m' });
-        res.json({ message: 'Autenticación exitosa', token: token });
+        res.json({ message: 'Autenticación exitosa', token: token, userId: user.id_usuario });
     });
 };
 
@@ -80,6 +102,7 @@ module.exports = {
     getUsuarioById,
     createUsuario,
     updateUsuario,
+    updatePassword,
     deleteUsuario,
     authenticateUsuario,
 };
