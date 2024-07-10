@@ -1,10 +1,6 @@
 const express = require('express');
-const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
 const app = express();
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv').config();
 const port = 3000;
 
 const usuariosRoutes = require('./src/routes/usuariosRoutes');
