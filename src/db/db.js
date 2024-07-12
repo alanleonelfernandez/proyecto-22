@@ -2,8 +2,7 @@ const mysql = require('mysql2');
 const dotenv = require('dotenv').config();
 
 const connection = mysql.createConnection({
-    host: 'https://phpmyadmin.alwaysdata.com/',
-    port: 3306,
+    host: 'mysql-chedolar.alwaysdata.net',
     user: 'chedolar',
     password: 'Proyecto22',
     database: 'chedolar_db'
