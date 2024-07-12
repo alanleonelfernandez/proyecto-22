@@ -2,11 +2,11 @@ const mysql = require('mysql2');
 const dotenv = require('dotenv').config();
 
 const connection = mysql.createConnection({
-    host: process.env.HOST_DB,
-    port: process.env.PORT_DB,
-    user: process.env.USER_DB,
-    password: process.env.PASS_DB,
-    database: process.env.NAME_DB
+    host: 'https://phpmyadmin.alwaysdata.com/',
+    port: 3306,
+    user: 'chedolar',
+    password: 'Proyecto22',
+    database: 'chedolar_db'
 });
 
 connection.connect((err) => {
