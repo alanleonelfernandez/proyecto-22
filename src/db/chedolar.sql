@@ -10,8 +10,8 @@ create table usuarios
    nombre		varchar(30) not null, 
    apellido     varchar(30) not null,
    id_tipo_usuario varchar(1) NULL DEFAULT 'U',
-   saldo_ars	numeric, 
-   saldo_usd    numeric,
+   saldo_ars	decimal(10,2),NULL DEFAULT '500000'
+   saldo_usd    decimal(10,2),NULL DEFAULT '10000'
    foreign key (id_tipo_usuario) references tipo_usuario (id_tipo_usuario),
    primary key (id_usuario)
 );
@@ -40,8 +40,6 @@ INSERT INTO moneda (id_moneda, nombre) VALUES ('5', 'Dólar (mayorista)');
 INSERT INTO moneda (id_moneda, nombre) VALUES ('6', 'Dólar (cripto)');
 INSERT INTO moneda (id_moneda, nombre) VALUES ('7', 'Dólar (tarjeta)');
 
-
-
 create table tipo_operacion
 (
 	id_tipo_operacion varchar(1) not null primary key, 
@@ -58,8 +56,8 @@ create table operaciones
     fecha				timestamp not null default current_timestamp, 
     id_tipo_operacion	varchar(1) not null references tipo_operacion, 
     id_moneda			varchar(5) not null references moneda,
-    importe_ars			numeric not null, 
-    importe_usd  		numeric not null
+    importe_ars			decimal(10,2), not null, 
+    importe_usd  		decimal(10,2), not null
 );
 
 

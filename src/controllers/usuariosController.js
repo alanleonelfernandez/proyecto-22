@@ -97,6 +97,60 @@ const authenticateUsuario = (req, res) => {
     });
 };
 
+const realizarOperacion = (req, res) => {
+    const { tipoOperacion, importeARS, importeUSD } = req.body;
+    const idUsuario = req.user.userId;
+    // Verificar el saldo
+    const saldoQuery = 'SELECT saldo_ars, saldo_usd FROM usuarios WHERE id_usuario = ?';
+    db.query(saldoQuery, [idUsuario], (err, result) => {
+        if (err) {
+            console.error('Error al verificar saldo:', err);
+            return res.status(500).json({ message: 'Error interno del servidor' });
+        }
+        const usuario = result[0];
+        if (!usuario) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+        //Formato para los saldos e importes
+        const saldoARS = parseFloat(usuario.saldo_ars);
+        const saldoUSD = parseFloat(usuario.saldo_usd);
+        const importeEnARS = parseFloat(importeARS);
+        const importeEnUSD = parseFloat(importeUSD);
+
+        let nuevoSaldoARS, nuevoSaldoUSD;
+        if (tipoOperacion === 'C') {
+            if (saldoARS < importeEnARS) {
+                return res.status(400).json({ message: 'Saldo insuficiente en ARS' });
+            }
+            nuevoSaldoARS = saldoARS - importeEnARS;
+            nuevoSaldoUSD = saldoUSD + importeEnUSD;
+        } else if (tipoOperacion === 'V') {
+            if (saldoUSD < importeEnUSD) {
+                return res.status(400).json({ message: 'Saldo insuficiente en USD' });
+            }
+            nuevoSaldoARS = saldoARS + importeEnARS;
+            nuevoSaldoUSD = saldoUSD - importeEnUSD;
+        }
+        // Actualizar el saldo
+        const updateSaldoQuery = 'UPDATE usuarios SET saldo_ars = ?, saldo_usd = ? WHERE id_usuario = ?';
+        db.query(updateSaldoQuery, [nuevoSaldoARS, nuevoSaldoUSD, idUsuario], (err, result) => {
+            if (err) {
+                console.error('Error al actualizar saldo:', err);
+                return res.status(500).json({ message: 'Error interno del servidor' });
+            }
+            // Registrar la operación
+            const insertOperacionQuery = 'INSERT INTO operaciones (id_usuario, id_tipo_operacion, id_moneda, importe_ars, importe_usd) VALUES (?, ?, ?, ?, ?)';
+            db.query(insertOperacionQuery, [idUsuario, tipoOperacion, 2, importeEnARS, importeEnUSD], (err, result) => {
+                if (err) {
+                    console.error('Error al registrar operación:', err);
+                    return res.status(500).json({ message: 'Error interno del servidor' });
+                }
+                res.json({ message: 'Operación realizada con éxito', saldo_ars: nuevoSaldoARS, saldo_usd: nuevoSaldoUSD });
+            });
+        });
+    });
+};
+
 module.exports = {
     getAllUsuarios,
     getUsuarioById,
@@ -105,4 +159,5 @@ module.exports = {
     updatePassword,
     deleteUsuario,
     authenticateUsuario,
+    realizarOperacion,
 };

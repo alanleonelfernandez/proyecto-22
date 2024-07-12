@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,6 @@
     <script>checkSession();</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -33,17 +31,18 @@
         </nav>
     </header>
     <main class="cotizacion">
-
         <div class="botones-perfil">
             <h1>Bienvenido - mi perfil</h1>
             <div>
                 <a href="edit-perfil.html">Editar mi Perfil</a>
             </div>
             <div>
-                <a href="#" disabled style="opacity: 0.5;">Mi Cuenta en USD<br>(proximamente)</a>
+                <a href="transacciones.html">Transacciones</a>
+            </div>
+            <div>
+                <a href="#"  class="borrar-perfil">Eliminar perfil</a>
             </div>
         </div>
-
         <div class="cotizacionCaja">
             <h2>Consultar Cotización del Dólar</h2>
             <form id="cotizacionForm">
@@ -61,7 +60,6 @@
                         <input type="number" id="anio" name="anio" min="2011" max="2100" required>
                     </div>
                 </div>
-                
                 <label for="casa">Tipo de cambio:</label>
                 <select id="casa" name="casa" required>
                     <option value="oficial">Oficial</option>
@@ -90,7 +88,6 @@
         </div>
         <p>Desarrollado por <span>Grupo22©</span></p>
     </footer>
-    
     <script>
         document.getElementById('cotizacionForm').addEventListener('submit', function(event) {
             event.preventDefault();

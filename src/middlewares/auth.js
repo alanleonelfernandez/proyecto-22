@@ -2,13 +2,16 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
 
 const authenticateJWT = (req, res, next) => {
-    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
-    if (token) {
-        jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    const authHeader = req.headers.authorization;
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+        jwt.verify(token, process.env.SECRET, (err, user) => {
             if (err) {
+                console.error('JWT verification error:', err);
                 return res.sendStatus(403);
             }
             req.user = user;
+            console.log('Authenticated user:', user);
             next();
         });
     } else {

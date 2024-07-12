@@ -4,11 +4,13 @@ const app = express();
 const port = 3000;
 
 const usuariosRoutes = require('./src/routes/usuariosRoutes');
+//const operacionesRoutes = require('./src/routes/operacionesRoutes');
 const authenticateJWT  = require('./src/middlewares/auth');
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use('/usuarios', usuariosRoutes);
+//app.use('/operaciones', authenticateJWT, operacionesRoutes);
 app.use(express.static(path.join(__dirname,'public')));
 
 //RUTA PRINCIPAL
@@ -28,6 +30,9 @@ app.get('/pages/edit-perfil.html', authenticateJWT, (req, res) => {
 });
 app.get('/pages/page-loginok.html', authenticateJWT, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'pages', 'page-loginok.html'));
+});
+app.get('/pages/transacciones.html', authenticateJWT, (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'transacciones.html'));
 });
 
 app.listen(port, ()=>{
