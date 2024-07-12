@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | CheDólar</title>
+    <title>Mi Perfil | CheDólar</title>
     <link rel="icon" href="https://i.ibb.co/Z6YYxth/icon-dolar.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="../js/cerrarSesion.js"></script>
@@ -40,7 +40,7 @@
                 <a href="transacciones.html">Transacciones</a>
             </div>
             <div>
-                <a href="#"  class="borrar-perfil">Eliminar perfil</a>
+                <a href="#" class="borrar-perfil">Eliminar perfil</a>
             </div>
         </div>
         <div class="cotizacionCaja">
@@ -116,6 +116,46 @@
                     });
             }
         });
+
+        document.querySelector('.borrar-perfil').addEventListener('click', function(event) {
+            event.preventDefault();
+            const clave = prompt("Por favor, ingrese su clave para confirmar la eliminación del perfil:");
+            if (clave) {
+                deleteUsuario(clave);
+            }
+        });
+
+        function deleteUsuario(clave) {
+            const token = localStorage.getItem('token');
+            const userId = localStorage.getItem('userId');
+
+            if (!token) {
+                alert("No se encontró el token de autenticación. Por favor, inicie sesión de nuevo.");
+                return;
+            }
+
+            fetch(`http://localhost:3000/usuarios/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({ clave: clave })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Perfil eliminado con éxito.");
+                    window.location.href = '/pages/login.html';
+                } else {
+                    alert("Error al eliminar el perfil: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Error al eliminar el perfil. Por favor, intente de nuevo más tarde.");
+            });
+        }
     </script>
 </body>
 </html>
