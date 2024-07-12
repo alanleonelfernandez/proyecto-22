@@ -134,7 +134,8 @@
                 return;
             }
 
-            fetch(`http://localhost:3000/usuarios/${userId}`, {
+            const apiUrl = 'http://localhost:3000';
+            fetch(`${apiUrl}/usuarios/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
