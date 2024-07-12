@@ -15,19 +15,41 @@ $(document).ready(function() {
                 const compraUSD = data.compra;
                 const ventaUSD = data.venta;
 
-                const compraUSDContainer = document.getElementById('compra-usd');
-                compraUSDContainer.innerHTML = `<strong>${compraUSD}</strong>`;
-
-                const ventaUSDContainer = document.getElementById('venta-usd');
-                ventaUSDContainer.innerHTML = `<strong>${ventaUSD}</strong>`;
+                $('#compra-usd').html(`<strong>${compraUSD}</strong>`);
+                $('#venta-usd').html(`<strong>${ventaUSD}</strong>`);
             })
             .catch(error => {
                 console.error('Error al obtener el valor del dólar:', error);
-                const resultadoDiv = document.getElementById('resultado');
-                resultadoDiv.innerHTML = '<p>Error al obtener el valor del dólar. Por favor, intente de nuevo más tarde.</p>';
+                $('#resultado').html('<p>Error al obtener el valor del dólar. Por favor, intente de nuevo más tarde.</p>');
             });
     }
     mostrarValoresDolar();
+
+    function mostrarSaldosUsuario() {
+        const token = localStorage.getItem('token');
+        const userId = localStorage.getItem('userId');
+
+        if (!token) {
+            alert("No se encontró el token de autenticación. Por favor, inicie sesión de nuevo.");
+            return;
+        }
+        fetch(`${apiUrl}/usuarios/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            $('#saldo-ars').html(`<strong>${data.saldo_ars}</strong>`);
+            $('#saldo-usd').html(`<strong>${data.saldo_usd}</strong>`);
+        })
+        .catch(error => {
+            console.error('Error al obtener los saldos del usuario:', error);
+            $('#resultado').html('<p>Error al obtener los saldos del usuario. Por favor, intente de nuevo más tarde.</p>');
+        });
+    }
+    mostrarSaldosUsuario();
 
     $('#realizar-operacion').click(function() {
         const tipoOperacion = $('#tipo-operacion').val();
@@ -68,17 +90,20 @@ $(document).ready(function() {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    $('#resultado').html(`<p>${data.message}</p>`);
+                    $('#resultado').html(`<p style="color: green;">${data.message}</p>`);
                     alert(`Operación realizada con éxito.\nSaldo ARS: ${data.saldo_ars}\nSaldo USD: ${data.saldo_usd}`);
+                    // Actualizar los saldos después de la operación
+                    $('#saldo-ars').html(`<strong>${data.saldo_ars}</strong>`);
+                    $('#saldo-usd').html(`<strong>${data.saldo_usd}</strong>`);
                 })
                 .catch(error => {
                     console.error('Error al realizar la operación:', error);
-                    $('#resultado').html('<p>Error al realizar la operación.</p>');
+                    $('#resultado').html('<p style="color: red;">Error al realizar la operación.</p>');
                 });
             })
             .catch(error => {
                 console.error('Error al obtener el valor del dólar:', error);
-                $('#resultado').html('<p>Error al obtener el valor del dólar.</p>');
+                $('#resultado').html('<p style="color: red;">Error al obtener el valor del dólar.</p>');
             });
     });
 });

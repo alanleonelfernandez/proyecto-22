@@ -7,6 +7,7 @@
     <link rel="icon" href="https://i.ibb.co/Z6YYxth/icon-dolar.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/animaciones.js"></script>
     <script src="../js/transacciones.js"></script>
     <script src="../js/cerrarSesion.js"></script>
     <script>checkSession();</script>
@@ -38,6 +39,11 @@
                 <p>Las operaciones de compra y venta se toman al valor del <strong>Dolar Oficial</strong> al dia de la fecha:</p>
                 <div>Compra USD: $<span id="compra-usd"></span></div>
                 <div>Venta USD: $<span id="venta-usd"></span></div>
+            </div>
+            <div>
+                <p>Saldo en cuenta:</p>
+                <p>ARS: $<span id="saldo-ars"></span></p>
+                <p>USD: $<span id="saldo-usd"></span></p>
             </div>
             <label for="tipo-operacion">Tipo de operación:</label>
             <select id="tipo-operacion">
