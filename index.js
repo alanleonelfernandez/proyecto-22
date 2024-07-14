@@ -36,5 +36,5 @@ app.get('/pages/transacciones.html', authenticateJWT, (req, res) => {
 });
 
 app.listen(port, ()=>{
-    console.log(`Servidor encendido en https://chedolar.alwaysdata.net/`);
+    console.log(`Servidor encendido en https://chedolar.vercel.app/`);
 });
