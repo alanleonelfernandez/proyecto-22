@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const apiUrl = 'https://chedolar.vercel.app';
+    const apiUrl = 'http://localhost:3000';
 
     function mostrarValoresDolar() {
         const fechaActual = new Date();
