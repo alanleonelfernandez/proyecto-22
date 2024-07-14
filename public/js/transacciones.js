@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const apiUrl = 'http://localhost:3000';
+    const apiUrl = 'https://chedolar.alwaysdata.net';
 
     function mostrarValoresDolar() {
         const fechaActual = new Date();
